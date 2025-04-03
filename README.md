@@ -40,20 +40,16 @@ To get the project up and running, follow these steps:
    git clone https://github.com/ISHIMWE-Bosco/event-locator.git
    cd event-locator
    
-2. **Install dependencies:**
-   
-bash
-Copy
-Edit
-npm install
-Set up the PostgreSQL database:
+### 1. Install dependencies:
 
+```bash
+npm install
+2. Set up the PostgreSQL database:
 Create a database called event_locator.
 
 Set up the events table with columns for event details, including a location column of type geometry for storing geospatial data (latitude and longitude).
 
-Set up environment variables:
-
+3. Set up environment variables:
 Create a .env file in the root directory and define the following variables:
 
 env
@@ -65,8 +61,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=event_locator
 JWT_SECRET=your_jwt_secret
-Start the server:
-
+4. Start the server:
 bash
 Copy
 Edit
@@ -201,15 +196,13 @@ Improve error handling and validation on inputs.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-vbnet
-Copy
-Edit
+Explanation:
+Setup Instructions: A clear step-by-step guide to set up the project, install dependencies, set up the database, and start the server.
 
-### Explanation:
-- **Setup Instructions:** A clear step-by-step guide to set up the project, install dependencies, set up the database, and start the server.
-- **API Documentation:** Describes the available API endpoints for authentication and event management, including request and response examples.
-- **Middleware Section:** Explains the authentication and authorization middleware used to secure routes.
-- **Known Limitations & TODO:** Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
-- **License:** Provides a section for licensing, which can be modified according to the actual project license.
+API Documentation: Describes the available API endpoints for authentication and event management, including request and response examples.
 
-This should give a comprehensive overview of the project, making it easier for someone new to understand
+Middleware Section: Explains the authentication and authorization middleware used to secure routes.
+
+Known Limitations & TODO: Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
+
+License: Provides a section for licensing, which can be modified according to the actual project license.
