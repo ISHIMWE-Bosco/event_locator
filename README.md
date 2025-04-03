@@ -175,6 +175,39 @@ Request Body:
   - Implement event category management (e.g., creating and associating categories with events).
   - Improve error handling and validation on inputs.
 
+## Database Schema
+
+**Users Table**
+| Column      | Type                 | Description                  |
+|------------|----------------------|------------------------------|
+| id         | SERIAL PRIMARY KEY   | Unique user ID               |
+| name       | VARCHAR(100)         | User's full name             |
+| email      | VARCHAR(100) UNIQUE  | User's email (must be unique) |
+| password   | TEXT                 | Hashed password              |
+| created_at | TIMESTAMP DEFAULT NOW() | Timestamp of user creation |
+
+**Categories Table**
+| Column      | Type                 | Description                  |
+|------------|----------------------|------------------------------|
+| id         | SERIAL PRIMARY KEY   | Unique category ID           |
+| name       | VARCHAR(50) UNIQUE   | Name of the category         |
+| created_at | TIMESTAMP DEFAULT NOW() | Timestamp of category creation |
+
+**Events Table**
+| Column      | Type                      | Description                  |
+|------------|--------------------------|------------------------------|
+| id         | SERIAL PRIMARY KEY       | Unique event ID              |
+| title      | VARCHAR(255)             | Event title                  |
+| description| TEXT                     | Description of the event      |
+| location   | GEOMETRY(Point, 4326)    | Geospatial point for event location |
+| longitude  | DOUBLE PRECISION         | Longitude coordinate         |
+| latitude   | DOUBLE PRECISION         | Latitude coordinate          |
+| datetime   | TIMESTAMP                | Date and time of the event   |
+| category_id | INTEGER REFERENCES categories(id) | Foreign key linking to categories |
+| created_by | INTEGER REFERENCES users(id) ON DELETE CASCADE | Foreign key linking to users |
+| created_at | TIMESTAMP DEFAULT NOW()  | Timestamp of event creation  |
+
+
 ### License
   This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -184,5 +217,6 @@ Request Body:
 - **API Documentation:** Describes the available API endpoints for authentication and event management, including request and response examples.
 - **Middleware Section:** Explains the authentication and authorization middleware used to secure routes.
 - **Known Limitations & TODO:** Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
+-  **Database Schema:** Highlight how each part of the app data is represented in the PostgreSQL database such as events, users, and categories. 
 - **License:** Provides a section for licensing, which can be modified according to the actual project license.
 
