@@ -42,8 +42,6 @@ To get the project up and running, follow these steps:
 2. **Install dependencies:**
 
 ```bash
-Copy
-Edit
 npm install
 ```
 3. **Set up the PostgreSQL database:**
@@ -113,7 +111,7 @@ Response:
   "token": "your_jwt_token"
 }
 ```
-- **Events**
+5. **Events**
 - **POST /api/events**
   - Create a new event (requires authentication).
 
