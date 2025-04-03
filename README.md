@@ -1,5 +1,5 @@
 # Event Locator API
-
+### Author: Bosco Ishimwe
 ## Overview
 
 The Event Locator API allows users to interact with event data, such as creating, updating, deleting, and searching for events. The API supports user authentication and authorization to restrict event creation to authenticated users. Additionally, it supports location-based search using geospatial data.
