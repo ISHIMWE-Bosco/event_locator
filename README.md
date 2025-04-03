@@ -37,34 +37,37 @@ To get the project up and running, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/ISHIMWE-Bosco/event-locator.git
+   git clone https://github.com/yourusername/event-locator.git
    cd event-locator
-   
-   
-### 1. Install dependencies:
-  npm install
-### 2. Set up the PostgreSQL database:
+Install dependencies:
+
+```bash
+Copy
+Edit
+npm install
+```
+Set up the PostgreSQL database:
+
 Create a database called event_locator.
 
 Set up the events table with columns for event details, including a location column of type geometry for storing geospatial data (latitude and longitude).
 
-### 3. Set up environment variables:
+Set up environment variables:
+
 Create a .env file in the root directory and define the following variables:
 
-env
-Copy
-Edit
+
+```bash
 DB_USER=your_db_user
 DB_PASSWORD=your_db_password
 DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=event_locator
 JWT_SECRET=your_jwt_secret
-4. Start the server:
-bash
-Copy
-Edit
-npm start
+Start the server:'''
+```
+
+'npm start'
 The server will be running on http://localhost:5000.
 
 API Endpoints
@@ -74,19 +77,16 @@ Register a new user.
 
 Request Body:
 
-json
-Copy
-Edit
+```Json
 {
   "email": "user@example.com",
   "password": "password123",
   "name": "User Name"
 }
+```
 Response:
 
-json
-Copy
-Edit
+```
 {
   "msg": "User registered successfully",
   "user": {
@@ -95,36 +95,33 @@ Edit
     "name": "User Name"
   }
 }
+```
 POST /api/auth/login
 Log in a user and receive a JWT token.
 
 Request Body:
 
-json
-Copy
-Edit
+```
 {
   "email": "user@example.com",
   "password": "password123"
 }
+```
 Response:
 
-json
-Copy
-Edit
-{
+
+```{
   "msg": "Login successful",
   "token": "your_jwt_token"
 }
+```
 Events
 POST /api/events
 Create a new event (requires authentication).
 
 Request Body:
 
-json
-Copy
-Edit
+```Json
 {
   "title": "Event Title",
   "description": "Event Description",
@@ -133,14 +130,13 @@ Edit
   "category_id": 1,
   "created_by": 1
 }
+```
 PUT /api/events/:id
 Update an event by ID (requires authentication).
 
 Request Body:
 
-json
-Copy
-Edit
+```Json
 {
   "title": "Updated Event Title",
   "description": "Updated Description",
@@ -149,6 +145,7 @@ Edit
   "category_id": 2,
   "created_by": 1
 }
+```
 DELETE /api/events/:id
 Delete an event by ID (requires authentication).
 
@@ -195,13 +192,12 @@ Improve error handling and validation on inputs.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Explanation:
-Setup Instructions: A clear step-by-step guide to set up the project, install dependencies, set up the database, and start the server.
 
-API Documentation: Describes the available API endpoints for authentication and event management, including request and response examples.
+### Explanation:
+- **Setup Instructions:** A clear step-by-step guide to set up the project, install dependencies, set up the database, and start the server.
+- **API Documentation:** Describes the available API endpoints for authentication and event management, including request and response examples.
+- **Middleware Section:** Explains the authentication and authorization middleware used to secure routes.
+- **Known Limitations & TODO:** Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
+- **License:** Provides a section for licensing, which can be modified according to the actual project license.
 
-Middleware Section: Explains the authentication and authorization middleware used to secure routes.
-
-Known Limitations & TODO: Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
-
-License: Provides a section for licensing, which can be modified according to the actual project license.
+This should give a comprehensive overview of the project, making it easier for someone new to und
