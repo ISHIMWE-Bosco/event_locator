@@ -37,9 +37,10 @@ To get the project up and running, follow these steps:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/event-locator.git
+   git clone https://github.com/ISHIMWE-Bosco/event-locator.git
    cd event-locator
-Install dependencies:
+   
+2. **Install dependencies:""
 
 bash
 Copy
@@ -211,4 +212,4 @@ Edit
 - **Known Limitations & TODO:** Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
 - **License:** Provides a section for licensing, which can be modified according to the actual project license.
 
-This should give a comprehensive overview of the project, making it easier for someone new to under
+This should give a comprehensive overview of the project, making it easier for someone new to und
