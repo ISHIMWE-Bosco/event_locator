@@ -40,16 +40,15 @@ To get the project up and running, follow these steps:
    git clone https://github.com/ISHIMWE-Bosco/event-locator.git
    cd event-locator
    
+   
 ### 1. Install dependencies:
-
-```bash
-npm install
-2. Set up the PostgreSQL database:
+  npm install
+### 2. Set up the PostgreSQL database:
 Create a database called event_locator.
 
 Set up the events table with columns for event details, including a location column of type geometry for storing geospatial data (latitude and longitude).
 
-3. Set up environment variables:
+### 3. Set up environment variables:
 Create a .env file in the root directory and define the following variables:
 
 env
