@@ -39,23 +39,21 @@ To get the project up and running, follow these steps:
    ```bash
    git clone https://github.com/yourusername/event-locator.git
    cd event-locator
-Install dependencies:
+2. **Install dependencies:**
 
 ```bash
 Copy
 Edit
 npm install
 ```
-Set up the PostgreSQL database:
+3. **Set up the PostgreSQL database:**
 
-Create a database called event_locator.
+  - Create a database called event_locator.
+  - Set up the events table with columns for event details, including a location column of type geometry for storing geospatial data (latitude and longitude).
 
-Set up the events table with columns for event details, including a location column of type geometry for storing geospatial data (latitude and longitude).
+4. **Set up environment variables:**
 
-Set up environment variables:
-
-Create a .env file in the root directory and define the following variables:
-
+  - Create a .env file in the root directory and define the following variables:
 
 ```bash
 DB_USER=your_db_user
@@ -70,10 +68,10 @@ Start the server:'''
 'npm start'
 The server will be running on http://localhost:5000.
 
-API Endpoints
-Authentication
-POST /api/auth/register
-Register a new user.
+- **API Endpoints**
+  - Authentication
+  - POST /api/auth/register
+  - Register a new user.
 
 Request Body:
 
@@ -96,8 +94,8 @@ Response:
   }
 }
 ```
-POST /api/auth/login
-Log in a user and receive a JWT token.
+- **POST /api/auth/login**
+  - Log in a user and receive a JWT token.
 
 Request Body:
 
@@ -115,9 +113,9 @@ Response:
   "token": "your_jwt_token"
 }
 ```
-Events
-POST /api/events
-Create a new event (requires authentication).
+- **Events**
+- **POST /api/events**
+  - Create a new event (requires authentication).
 
 Request Body:
 
@@ -131,8 +129,8 @@ Request Body:
   "created_by": 1
 }
 ```
-PUT /api/events/:id
-Update an event by ID (requires authentication).
+- **PUT /api/events/:id**
+  - Update an event by ID (requires authentication).
 
 Request Body:
 
@@ -146,51 +144,41 @@ Request Body:
   "created_by": 1
 }
 ```
-DELETE /api/events/:id
-Delete an event by ID (requires authentication).
+- **DELETE /api/events/:id**
+  - Delete an event by ID (requires authentication).
 
-GET /api/events
-Get all events.
+- **GET /api/events**
+  - Get all events.
+  - GET /api/events/:id
+  - Get an event by ID.
 
-GET /api/events/:id
-Get an event by ID.
+- **GET /api/events/search**
+  - Search for events within a radius of a point (latitude, longitude).
 
-GET /api/events/search
-Search for events within a radius of a point (latitude, longitude).
+- **Query Parameters:**
+  - latitude (required)
+  - longitude (required)
+  - radius (required in meters)
+  - Example:
+```/api/events/search?latitude=-1.9781&longitude=30.1342&radius=5000```
 
-Query Parameters:
+- **Middleware**
+  - Authentication Middleware: Verifies the presence and validity of the JWT token in the request headers for protected routes.
+  - Authorization Middleware: Ensures that only authenticated users can create or modify events.
 
-latitude (required)
+- **Known Limitations**
+  - The current geospatial search implementation uses the ST_DWithin function from PostGIS, which is effective for small radius searches. However, for larger datasets or more complex geospatial queries, performance might degrade.
+  - The application doesn't have an admin role or role-based access control (RBAC) for finer authorization control. For now, any authenticated user can create events.
+  - Error handling is basic, and detailed validation for inputs and edge cases (e.g., for location, datetime) can be improved.
 
-longitude (required)
+- **Improvement**
+  - Implement role-based access control (RBAC).
+  - Add pagination or filtering to event search for better performance when the number of events grows.
+  - Implement event category management (e.g., creating and associating categories with events).
+  - Improve error handling and validation on inputs.
 
-radius (required in meters)
-
-Example: /api/events/search?latitude=-1.9781&longitude=30.1342&radius=5000
-
-Middleware
-Authentication Middleware: Verifies the presence and validity of the JWT token in the request headers for protected routes.
-
-Authorization Middleware: Ensures that only authenticated users can create or modify events.
-
-Known Limitations
-The current geospatial search implementation uses the ST_DWithin function from PostGIS, which is effective for small radius searches. However, for larger datasets or more complex geospatial queries, performance might degrade.
-
-The application doesn't have an admin role or role-based access control (RBAC) for finer authorization control. For now, any authenticated user can create events.
-
-Error handling is basic, and detailed validation for inputs and edge cases (e.g., for location, datetime) can be improved.
-
-TODO
-Implement role-based access control (RBAC).
-
-Add pagination or filtering to event search for better performance when the number of events grows.
-
-Implement event category management (e.g., creating and associating categories with events).
-
-Improve error handling and validation on inputs.
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+### License
+  This project is licensed under the MIT License - see the LICENSE file for details.
 
 
 ### Explanation:
@@ -200,4 +188,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - **Known Limitations & TODO:** Highlights areas of improvement and features yet to be implemented, such as role-based access control (RBAC) and event categories.
 - **License:** Provides a section for licensing, which can be modified according to the actual project license.
 
-This should give a comprehensive overview of the project, making it easier for someone new to und
